@@ -11,15 +11,19 @@ import News from "../../Pages/News/News";
       children: [
         {
           path: '/',
-          element: <Home></Home>
+          element: <Home></Home>,
+          loader: ()=> fetch('http://localhost:5000/news')
         },
         {
         path: '/catagory/:id',
-          element: <Catagory></Catagory>
+          element: <Catagory></Catagory>,
+          loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
         },
         {
           path: '/news/:id',
-          element: <News></News>
+          element: <News></News>,
+          loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+                  
         },
       ]
     }
